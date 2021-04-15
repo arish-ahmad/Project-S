@@ -8,10 +8,11 @@ print(host)
 print('server is ready to accept connection')
 clientobject,add=s.accept()
 print('connected with this address',add)
-while True:
+conn=True
+while conn:
    gotmsg=clientobject.recv(1024)
    gotmsg.decode('utf-8')
    print(gotmsg)
-   if gotmsg ==  'q':
+   if len(gotmsg) == 0:
+      conn=False
       s.close()
-#s.close()
