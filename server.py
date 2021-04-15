@@ -1,11 +1,13 @@
 import socket
 def get_ip():
-   s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-   s.connect(('8.8.8.8',80))
-   return s.getsockname()[0]
+    ip= socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    ip.connect(("8.8.8.8", 80))
+    return ip.getsockname()[0]
+    s.close()
+s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = str(get_ip())
-port = 8584
 print(host)
+port = 8584
 s.bind((host,port))
 s.listen(4)
 print(host)
